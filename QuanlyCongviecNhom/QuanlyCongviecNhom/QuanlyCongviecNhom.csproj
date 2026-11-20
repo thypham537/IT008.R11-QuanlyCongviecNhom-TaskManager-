@@ -1,53 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net10.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net10.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Noto\NotoSans-Bold.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Noto\NotoSans-BoldItalic.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Noto\NotoSans-Italic.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Noto\NotoSans-Regular.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Roboto\Roboto-Black.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Roboto\Roboto-BlackItalic.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Roboto\Roboto-Bold.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Roboto\Roboto-BoldItalic.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Roboto\Roboto-Italic.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Roboto\Roboto-Light.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Roboto\Roboto-LightItalic.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Roboto\Roboto-Medium.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Roboto\Roboto-MediumItalic.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Roboto\Roboto-Regular.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Roboto\Roboto-Thin.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Roboto\Roboto-ThinItalic.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Roboto\RobotoCondensed-Bold.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Roboto\RobotoCondensed-BoldItalic.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Roboto\RobotoCondensed-Italic.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Roboto\RobotoCondensed-Light.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Roboto\RobotoCondensed-LightItalic.ttf" />
-    <Content Remove="C:\Users\LENOVO\.nuget\packages\materialdesignthemes\5.4.0\contentFiles\any\net10.0-windows7.0\Resources\Roboto\RobotoCondensed-Regular.ttf" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Helpers\" />
-    <Folder Include="Services\" />
-    <Folder Include="Views\" />
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.5" />
-    <PackageReference Include="MaterialDesignThemes" Version="5.4.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-rc5.4" />
+		<PackageReference Include="MaterialDesignThemes" Version="5.4.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 
 </Project>
