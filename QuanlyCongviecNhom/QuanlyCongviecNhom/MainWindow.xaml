@@ -8,14 +8,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <StackPanel>
-            <Button Content="Tạo project mới" Margin="10" Style="{DynamicResource PrimaryButtonStyle}"> 
-                
-            </Button>
-
-            <Button Content= "Tạo danh sách mới " Margin="10">
-                
-            </Button>
-        </StackPanel>
+        
     </Grid>
 </Window>
