@@ -1,0 +1,54 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Phông chữ chính (Ưu tiên Inter nếu máy đã cài, tự động fallback về Segoe UI / Arial) -->
+    <FontFamily x:Key="FontMain">Inter, Segoe UI, Arial</FontFamily>
+
+    <!-- Kích thước chữ chuẩn -->
+    <sys:Double x:Key="FontSizeXS">11</sys:Double>
+    <!-- Eyebrow, Header cột bảng, Tag nhỏ -->
+    <sys:Double x:Key="FontSizeSM">12</sys:Double>
+    <!-- Thông tin phụ, Ngày tháng, Avatar -->
+    <sys:Double x:Key="FontSizeBody">13.5</sys:Double>
+    <!-- Nội dung chính, Nút bấm, Input -->
+    <sys:Double x:Key="FontSizeMD">15</sys:Double>
+    <!-- Tên dự án, Tiêu đề thẻ nhỏ -->
+    <sys:Double x:Key="FontSizeLG">20</sys:Double>
+    <!-- Số liệu 100%, Tiêu đề Popup -->
+    <sys:Double x:Key="FontSizeTitle">26</sys:Double>
+    <!-- Tiêu đề lớn của trang -->
+
+    <!-- ==================== CÁC STYLE CHỮ DỰNG SẴN ==================== -->
+    <!-- 1. Dòng chữ nhỏ in hoa màu xanh phía trên tiêu đề (VD: "KHÔNG GIAN LÀM VIỆC") -->
+    <Style x:Key="EyebrowTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource FontMain}"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeXS}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushPrimary}"/>
+    </Style>
+
+    <!-- 2. Tiêu đề chính của màn hình (VD: "Danh sách Project", "Lịch công việc") -->
+    <Style x:Key="PageTitleTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource FontMain}"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeTitle}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushTextPrimary}"/>
+    </Style>
+
+    <!-- 3. Dòng mô tả dưới tiêu đề (VD: "Theo dõi tiến độ, thời hạn...") -->
+    <Style x:Key="PageSubtitleTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource FontMain}"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeBody}"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushTextSecondary}"/>
+    </Style>
+
+    <!-- 4. Tiêu đề cột bảng (VD: "PROJECT", "TIẾN ĐỘ", "THỜI HẠN", "NGƯỜI ĐẢM NHẬN") -->
+    <Style x:Key="TableHeaderTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource FontMain}"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeXS}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{DynamicResource BrushTextMuted}"/>
+    </Style>
+
+</ResourceDictionary>
