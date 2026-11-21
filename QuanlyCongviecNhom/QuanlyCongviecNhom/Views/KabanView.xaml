@@ -1,0 +1,364 @@
+﻿<UserControl x:Class="QuanlyCongviecNhom.Views.KanbanView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Background="{DynamicResource BrushAppBackground}"
+             FontFamily="{StaticResource FontMain}">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="32,24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- ================= HÀNG 1: THANH ĐIỀU HƯỚNG & TRẠNG THÁI LƯU ================= -->
+            <DockPanel Grid.Row="0" Margin="0,0,0,16">
+                <Button Background="Transparent" BorderThickness="0" Padding="0" Cursor="Hand"
+                        HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="ChevronLeft" Width="18" Height="18" 
+                                                 Foreground="{DynamicResource BrushPrimary}" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                        <TextBlock Text="Danh sách Project" FontSize="{StaticResource FontSizeSM}" 
+                                   FontWeight="SemiBold" Foreground="{DynamicResource BrushPrimary}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Ellipse Width="7" Height="7" Fill="{DynamicResource BrushStatusActive}" Margin="0,0,6,0" VerticalAlignment="Center"/>
+                    <TextBlock Text="Đã tự động lưu" FontSize="{StaticResource FontSizeSM}" 
+                               FontWeight="Medium" Foreground="{DynamicResource BrushTextSecondary}" VerticalAlignment="Center"/>
+                </StackPanel>
+            </DockPanel>
+
+            <!-- ================= HÀNG 2: BANNER THÔNG TIN PROJECT ================= -->
+            <Border Grid.Row="1" Style="{StaticResource ProjectBannerStyle}" Margin="0,0,0,22">
+                <DockPanel>
+                    <StackPanel VerticalAlignment="Center" MaxWidth="520">
+                        <TextBlock Text="BẢNG PHÂN CÔNG" FontSize="{StaticResource FontSizeXS}" FontWeight="Bold" 
+                                   Foreground="{DynamicResource BrushSidebarText}" Margin="0,0,0,6"/>
+                        <TextBlock Text="Hệ thống Design System" FontSize="{StaticResource FontSizeTitle}" FontWeight="Bold" 
+                                   Foreground="White"/>
+                        <TextBlock Text="Chuẩn hóa thư viện thành phần và tài liệu sử dụng cho đội sản phẩm." 
+                                   FontSize="{StaticResource FontSizeBody}" Foreground="{DynamicResource BrushSidebarText}" 
+                                   TextWrapping="Wrap" Margin="0,6,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Border Background="{DynamicResource BrushBannerChipBg}" CornerRadius="12" Padding="18,12" Margin="0,0,12,0">
+                            <StackPanel>
+                                <TextBlock Text="TIẾN ĐỘ" FontSize="{StaticResource FontSizeXS}" FontWeight="Bold" 
+                                           Foreground="{DynamicResource BrushSidebarText}"/>
+                                <TextBlock Text="100%" FontSize="{StaticResource FontSizeLG}" FontWeight="Bold" 
+                                           Foreground="White" Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Background="{DynamicResource BrushBannerChipBg}" CornerRadius="12" Padding="18,12" Margin="0,0,12,0">
+                            <StackPanel>
+                                <TextBlock Text="THỜI HẠN" FontSize="{StaticResource FontSizeXS}" FontWeight="Bold" 
+                                           Foreground="{DynamicResource BrushSidebarText}"/>
+                                <TextBlock Text="05/12/2026" FontSize="{StaticResource FontSizeMD}" FontWeight="Bold" 
+                                           Foreground="White" Margin="0,6,0,0"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Background="{DynamicResource BrushBannerChipBg}" CornerRadius="12" Padding="16,12" VerticalAlignment="Stretch">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="Đang thực hiện" FontSize="{StaticResource FontSizeBody}" FontWeight="SemiBold" 
+                                           Foreground="White" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <materialDesign:PackIcon Kind="ChevronDown" Width="16" Height="16" Foreground="White" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+
+            <!-- ================= HÀNG 3: THÀNH VIÊN THAM GIA & NÚT THÊM CÔNG VIỆC ================= -->
+            <DockPanel Grid.Row="2" Margin="0,0,0,18">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,12,0">
+                        <Border Style="{StaticResource AvatarCircleStyle}" Width="34" Height="34" CornerRadius="17"
+                                Background="{DynamicResource BrushAvatarBlueBg}" Panel.ZIndex="3">
+                            <TextBlock Text="MA" Foreground="{DynamicResource BrushAvatarBlueText}" FontSize="{StaticResource FontSizeXS}" 
+                                       FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <Border Style="{StaticResource AvatarCircleStyle}" Width="34" Height="34" CornerRadius="17"
+                                Background="{DynamicResource BrushAvatarPurpleBg}" Margin="-8,0,0,0" Panel.ZIndex="2">
+                            <TextBlock Text="HN" Foreground="{DynamicResource BrushAvatarPurpleText}" FontSize="{StaticResource FontSizeXS}" 
+                                       FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <Border Style="{StaticResource AvatarCircleStyle}" Width="34" Height="34" CornerRadius="17"
+                                Background="{DynamicResource BrushAvatarEmeraldBg}" Margin="-8,0,0,0" Panel.ZIndex="1">
+                            <TextBlock Text="TH" Foreground="{DynamicResource BrushAvatarEmeraldText}" FontSize="{StaticResource FontSizeXS}" 
+                                       FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </StackPanel>
+
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="3 thành viên tham gia" FontSize="{StaticResource FontSizeBody}" 
+                                   FontWeight="Bold" Foreground="{DynamicResource BrushTextPrimary}"/>
+                        <TextBlock Text="Anh, Nam, Hà" FontSize="{StaticResource FontSizeSM}" 
+                                   Foreground="{DynamicResource BrushTextMuted}" Margin="0,2,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <Button Style="{StaticResource PrimaryButtonStyle}"
+                        HorizontalAlignment="Right" VerticalAlignment="Center"
+                        Click="BtnAddTask_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Plus" Width="18" Height="18" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                        <TextBlock Text="Thêm công việc" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </DockPanel>
+
+            <!-- ================= HÀNG 4: BẢNG PHÂN CÔNG CÔNG VIỆC ================= -->
+            <Border Grid.Row="3" Style="{StaticResource SurfaceCardStyle}" Padding="0" VerticalAlignment="Top">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                    <StackPanel MinWidth="1050">
+                        <!-- TIÊU ĐỀ CỘT -->
+                        <Border BorderBrush="{DynamicResource BrushBorderLight}" BorderThickness="0,0,0,1" Padding="24,16">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="42"/>
+                                    <ColumnDefinition Width="260"/>
+                                    <ColumnDefinition Width="195"/>
+                                    <ColumnDefinition Width="130"/>
+                                    <ColumnDefinition Width="165"/>
+                                    <ColumnDefinition Width="135"/>
+                                    <ColumnDefinition Width="125"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="1" Text="TÊN CÔNG VIỆC" Style="{StaticResource TableHeaderTextStyle}"/>
+                                <TextBlock Grid.Column="2" Text="NGƯỜI ĐẢM NHẬN" Style="{StaticResource TableHeaderTextStyle}"/>
+                                <TextBlock Grid.Column="3" Text="ƯU TIÊN" Style="{StaticResource TableHeaderTextStyle}"/>
+                                <TextBlock Grid.Column="4" Text="TRẠNG THÁI" Style="{StaticResource TableHeaderTextStyle}"/>
+                                <TextBlock Grid.Column="5" Text="NGÀY BẮT ĐẦU" Style="{StaticResource TableHeaderTextStyle}"/>
+                                <TextBlock Grid.Column="6" Text="NGÀY KẾT THÚC" Style="{StaticResource TableHeaderTextStyle}"/>
+                                <TextBlock Grid.Column="7" Text="CHÚ THÍCH" Style="{StaticResource TableHeaderTextStyle}"/>
+                            </Grid>
+                        </Border>
+
+                        <!-- ================= DÒNG DỮ LIỆU 1 ================= -->
+                        <Border BorderBrush="{DynamicResource BrushBorderLight}" BorderThickness="0,0,0,1" Padding="24,16">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="42"/>
+                                    <ColumnDefinition Width="260"/>
+                                    <ColumnDefinition Width="195"/>
+                                    <ColumnDefinition Width="130"/>
+                                    <ColumnDefinition Width="165"/>
+                                    <ColumnDefinition Width="135"/>
+                                    <ColumnDefinition Width="125"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <CheckBox Grid.Column="0" IsChecked="True" VerticalAlignment="Center"
+                                          Style="{StaticResource MaterialDesignCheckBox}"
+                                          Background="{DynamicResource BrushPrimary}"/>
+
+                                <TextBlock Grid.Column="1" Text="Chuẩn hóa color và spacing tokens"
+                                           FontSize="{StaticResource FontSizeBody}" FontWeight="Medium"
+                                           Foreground="{DynamicResource BrushTextSecondary}"
+                                           VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="0,0,16,0"/>
+
+                                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Border Style="{StaticResource AvatarCircleStyle}" Background="{DynamicResource BrushAvatarPurpleBg}" Margin="0,0,8,0">
+                                        <TextBlock Text="HN" Foreground="{DynamicResource BrushAvatarPurpleText}" FontSize="{StaticResource FontSizeXS}" 
+                                                   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <TextBlock Text="Trần Hoàng Nam" FontSize="{StaticResource FontSizeBody}" 
+                                               Foreground="{DynamicResource BrushTextPrimary}" VerticalAlignment="Center"/>
+                                    <materialDesign:PackIcon Kind="ChevronDown" Width="15" Height="15" 
+                                                             Foreground="{DynamicResource BrushTextMuted}" Margin="6,0,0,0" VerticalAlignment="Center"/>
+                                </StackPanel>
+
+                                <!-- Ưu tiên: Trung bình -->
+                                <Border Grid.Column="3" Background="{DynamicResource BrushPriorityMediumBg}" 
+                                        CornerRadius="10" Padding="12,6" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Trung bình" Foreground="{DynamicResource BrushPriorityMediumText}" 
+                                                   FontSize="{StaticResource FontSizeSM}" FontWeight="SemiBold"/>
+                                        <materialDesign:PackIcon Kind="ChevronDown" Width="14" Height="14" 
+                                                                 Foreground="{DynamicResource BrushPriorityMediumText}" Margin="6,0,0,0" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Trạng thái -->
+                                <ComboBox Grid.Column="4" Width="142" SelectedIndex="2" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                          Background="{DynamicResource BrushStatusDoneBg}" Foreground="{DynamicResource BrushStatusDoneText}"
+                                          FontWeight="SemiBold" FontSize="{StaticResource FontSizeSM}" BorderThickness="0" Padding="12,7"
+                                          materialDesign:ComboBoxAssist.ShowSelectedItem="True">
+                                    <ComboBoxItem Content="Cần làm"/>
+                                    <ComboBoxItem Content="Đang làm"/>
+                                    <ComboBoxItem Content="Hoàn thành"/>
+                                </ComboBox>
+
+                                <!-- Ngày bắt đầu -->
+                                <StackPanel Grid.Column="5" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock Text="11/01/2026" FontSize="{StaticResource FontSizeSM}" Foreground="{DynamicResource BrushTextPrimary}" VerticalAlignment="Center"/>
+                                    <materialDesign:PackIcon Kind="CalendarBlankOutline" Width="14" Height="14" 
+                                                             Foreground="{DynamicResource BrushTextSecondary}" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                                </StackPanel>
+
+                                <!-- Ngày kết thúc -->
+                                <TextBlock Grid.Column="6" Text="11/14/2026" FontSize="{StaticResource FontSizeSM}" 
+                                           Foreground="{DynamicResource BrushTextPrimary}" VerticalAlignment="Center"/>
+
+                                <!-- Chú thích -->
+                                <TextBlock Grid.Column="7" Text="Đã thống nhất bảng màu" FontSize="{StaticResource FontSizeSM}" 
+                                           Foreground="{DynamicResource BrushTextMuted}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                            </Grid>
+                        </Border>
+
+                        <!-- ================= DÒNG DỮ LIỆU 2 ================= -->
+                        <Border BorderBrush="{DynamicResource BrushBorderLight}" BorderThickness="0,0,0,1" Padding="24,16">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="42"/>
+                                    <ColumnDefinition Width="260"/>
+                                    <ColumnDefinition Width="195"/>
+                                    <ColumnDefinition Width="130"/>
+                                    <ColumnDefinition Width="165"/>
+                                    <ColumnDefinition Width="135"/>
+                                    <ColumnDefinition Width="125"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <CheckBox Grid.Column="0" IsChecked="True" VerticalAlignment="Center"
+                                          Style="{StaticResource MaterialDesignCheckBox}"
+                                          Background="{DynamicResource BrushPrimary}"/>
+
+                                <TextBlock Grid.Column="1" Text="Hoàn thiện nhóm Button và Input"
+                                           FontSize="{StaticResource FontSizeBody}" FontWeight="Medium"
+                                           Foreground="{DynamicResource BrushTextSecondary}"
+                                           VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="0,0,16,0"/>
+
+                                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Border Style="{StaticResource AvatarCircleStyle}" Background="{DynamicResource BrushAvatarEmeraldBg}" Margin="0,0,8,0">
+                                        <TextBlock Text="TH" Foreground="{DynamicResource BrushAvatarEmeraldText}" FontSize="{StaticResource FontSizeXS}" 
+                                                   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <TextBlock Text="Lê Thu Hà" FontSize="{StaticResource FontSizeBody}" 
+                                               Foreground="{DynamicResource BrushTextPrimary}" VerticalAlignment="Center"/>
+                                    <materialDesign:PackIcon Kind="ChevronDown" Width="15" Height="15" 
+                                                             Foreground="{DynamicResource BrushTextMuted}" Margin="6,0,0,0" VerticalAlignment="Center"/>
+                                </StackPanel>
+
+                                <!-- Ưu tiên: Cao -->
+                                <Border Grid.Column="3" Background="{DynamicResource BrushPriorityHighBg}" 
+                                        CornerRadius="10" Padding="12,6" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Cao" Foreground="{DynamicResource BrushPriorityHighText}" 
+                                                   FontSize="{StaticResource FontSizeSM}" FontWeight="SemiBold"/>
+                                        <materialDesign:PackIcon Kind="ChevronDown" Width="14" Height="14" 
+                                                                 Foreground="{DynamicResource BrushPriorityHighText}" Margin="6,0,0,0" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Trạng thái -->
+                                <ComboBox Grid.Column="4" Width="142" SelectedIndex="2" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                          Background="{DynamicResource BrushStatusDoneBg}" Foreground="{DynamicResource BrushStatusDoneText}"
+                                          FontWeight="SemiBold" FontSize="{StaticResource FontSizeSM}" BorderThickness="0" Padding="12,7">
+                                    <ComboBoxItem Content="Cần làm"/>
+                                    <ComboBoxItem Content="Đang làm"/>
+                                    <ComboBoxItem Content="Hoàn thành"/>
+                                </ComboBox>
+
+                                <!-- Ngày bắt đầu -->
+                                <StackPanel Grid.Column="5" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock Text="11/12/2026" FontSize="{StaticResource FontSizeSM}" Foreground="{DynamicResource BrushTextPrimary}" VerticalAlignment="Center"/>
+                                    <materialDesign:PackIcon Kind="CalendarBlankOutline" Width="14" Height="14" 
+                                                             Foreground="{DynamicResource BrushTextSecondary}" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                                </StackPanel>
+
+                                <!-- Ngày kết thúc -->
+                                <TextBlock Grid.Column="6" Text="11/20/2026" FontSize="{StaticResource FontSizeSM}" 
+                                           Foreground="{DynamicResource BrushTextPrimary}" VerticalAlignment="Center"/>
+
+                                <!-- Chú thích -->
+                                <TextBlock Grid.Column="7" Text="Kiểm tra hiệu ứng hover" FontSize="{StaticResource FontSizeSM}" 
+                                           Foreground="{DynamicResource BrushTextMuted}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                            </Grid>
+                        </Border>
+
+                        <!-- ================= DÒNG DỮ LIỆU 3 ================= -->
+                        <Border Padding="24,16">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="42"/>
+                                    <ColumnDefinition Width="260"/>
+                                    <ColumnDefinition Width="195"/>
+                                    <ColumnDefinition Width="130"/>
+                                    <ColumnDefinition Width="165"/>
+                                    <ColumnDefinition Width="135"/>
+                                    <ColumnDefinition Width="125"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <CheckBox Grid.Column="0" IsChecked="False" VerticalAlignment="Center"
+                                          Style="{StaticResource MaterialDesignCheckBox}"
+                                          Background="{DynamicResource BrushPrimary}"/>
+
+                                <TextBlock Grid.Column="1" Text="Viết tài liệu hướng dẫn sử dụng"
+                                           FontSize="{StaticResource FontSizeBody}" FontWeight="Medium"
+                                           Foreground="{DynamicResource BrushTextPrimary}"
+                                           VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="0,0,16,0"/>
+
+                                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Border Style="{StaticResource AvatarCircleStyle}" Background="{DynamicResource BrushAvatarBlueBg}" Margin="0,0,8,0">
+                                        <TextBlock Text="MA" Foreground="{DynamicResource BrushAvatarBlueText}" FontSize="{StaticResource FontSizeXS}" 
+                                                   FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <TextBlock Text="Nguyễn Minh Anh" FontSize="{StaticResource FontSizeBody}" 
+                                               Foreground="{DynamicResource BrushTextPrimary}" VerticalAlignment="Center"/>
+                                    <materialDesign:PackIcon Kind="ChevronDown" Width="15" Height="15" 
+                                                             Foreground="{DynamicResource BrushTextMuted}" Margin="6,0,0,0" VerticalAlignment="Center"/>
+                                </StackPanel>
+
+                                <!-- Ưu tiên: Thấp -->
+                                <Border Grid.Column="3" Background="{DynamicResource BrushPriorityLowBg}" 
+                                        CornerRadius="10" Padding="12,6" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Thấp" Foreground="{DynamicResource BrushPriorityLowText}" 
+                                                   FontSize="{StaticResource FontSizeSM}" FontWeight="SemiBold"/>
+                                        <materialDesign:PackIcon Kind="ChevronDown" Width="14" Height="14" 
+                                                                 Foreground="{DynamicResource BrushPriorityLowText}" Margin="6,0,0,0" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Trạng thái -->
+                                <ComboBox Grid.Column="4" Width="142" SelectedIndex="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                          Background="{DynamicResource BrushStatusDoingBg}" Foreground="{DynamicResource BrushStatusDoingText}"
+                                          FontWeight="SemiBold" FontSize="{StaticResource FontSizeSM}" BorderThickness="0" Padding="12,7">
+                                    <ComboBoxItem Content="Cần làm"/>
+                                    <ComboBoxItem Content="Đang làm"/>
+                                    <ComboBoxItem Content="Hoàn thành"/>
+                                </ComboBox>
+
+                                <!-- Ngày bắt đầu -->
+                                <StackPanel Grid.Column="5" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock Text="11/22/2026" FontSize="{StaticResource FontSizeSM}" Foreground="{DynamicResource BrushTextPrimary}" VerticalAlignment="Center"/>
+                                    <materialDesign:PackIcon Kind="CalendarBlankOutline" Width="14" Height="14" 
+                                                             Foreground="{DynamicResource BrushTextSecondary}" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                                </StackPanel>
+
+                                <!-- Ngày kết thúc -->
+                                <TextBlock Grid.Column="6" Text="12/03/2026" FontSize="{StaticResource FontSizeSM}" 
+                                           Foreground="{DynamicResource BrushTextPrimary}" VerticalAlignment="Center"/>
+
+                                <!-- Chú thích -->
+                                <TextBlock Grid.Column="7" Text="Đang soạn phần hướng dẫn" FontSize="{StaticResource FontSizeSM}" 
+                                           Foreground="{DynamicResource BrushTextMuted}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</UserControl>
