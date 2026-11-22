@@ -13,14 +13,16 @@ using System.Windows.Shapes;
 
 namespace QuanlyCongviecNhom.Views
 {
-    /// <summary>
-    /// Interaction logic for KabanView.xaml
-    /// </summary>
-    public partial class KabanView : UserControl
+    public partial class KanbanView : UserControl
     {
-        public KabanView()
+        public KanbanView()
         {
             InitializeComponent();
+        }
+        private void BtnAddTask_Click(object sender, RoutedEventArgs e)
+        {
+            var taskDetail = new TaskDetailWindow();
+            taskDetail.ShowDialog();
         }
     }
 }
