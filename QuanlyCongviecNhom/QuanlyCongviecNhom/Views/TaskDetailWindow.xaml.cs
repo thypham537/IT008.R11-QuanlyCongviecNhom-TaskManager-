@@ -13,14 +13,28 @@ using System.Windows.Shapes;
 
 namespace QuanlyCongviecNhom.Views
 {
-    /// <summary>
-    /// Interaction logic for TaskDetailWindow.xaml
-    /// </summary>
-    public partial class TaskDetailWindow : UserControl
+    public partial class TaskDetailWindow : Window
     {
         public TaskDetailWindow()
         {
             InitializeComponent();
+        }
+        private void Header_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
