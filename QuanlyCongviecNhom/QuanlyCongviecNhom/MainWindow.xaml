@@ -3,11 +3,151 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:sys="clr-namespace:System;assembly=mscorlib" 
-        xmlns:local="clr-namespace:QuanlyCongviecNhom"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:vm="clr-namespace:QuanlyCongviecNhom.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Flowdesk - Project Space" 
+        Height="780" Width="1280"
+        MinHeight="650" MinWidth="1000"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="{StaticResource FontMain}"
+        Background="{DynamicResource BrushAppBackground}">
+
+    <!-- Khai báo DataTemplate: Map từ ViewModel sang View tương ứng -->
+    <Window.Resources>
+        <!-- Khi Người A hoàn thành các UserControl View, bạn chỉ cần thay TextBlock bằng UserControl của A -->
+        <DataTemplate DataType="{x:Type vm:ProjectListViewModel}">
+            <!-- Tạm thời hiển thị text test, sau này thay bằng <views:ProjectListView /> -->
+            <Grid Background="{DynamicResource BrushAppBackground}">
+                <TextBlock Text="ĐÂY LÀ VIEW: DANH SÁCH PROJECT" 
+                           FontSize="24" FontWeight="Bold" 
+                           Foreground="{DynamicResource BrushPrimary}"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:TaskBoardViewModel}">
+            <Grid Background="{DynamicResource BrushAppBackground}">
+                <TextBlock Text="ĐÂY LÀ VIEW: BẢNG PHÂN CÔNG CÔNG VIỆC" 
+                           FontSize="24" FontWeight="Bold" 
+                           Foreground="{DynamicResource BrushPrimary}"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:CalendarViewModel}">
+            <Grid Background="{DynamicResource BrushAppBackground}">
+                <TextBlock Text="ĐÂY LÀ VIEW: LỊCH CÔNG VIỆC" 
+                           FontSize="24" FontWeight="Bold" 
+                           Foreground="{DynamicResource BrushPrimary}"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+
+    <!-- BỐ CỤC CHÍNH 2 CỘT -->
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <!-- Cột trái: Sidebar (Cố định 250px) -->
+            <ColumnDefinition Width="250"/>
+            <!-- Cột phải: Content chính (Co giãn tự do) -->
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ==================== CỘT TRÁI: SIDEBAR NAVY ==================== -->
+        <Border Grid.Column="0" Background="{DynamicResource BrushSidebarBg}">
+            <Grid Margin="16,20,16,20">
+                <Grid.RowDefinitions>
+                    <!-- Header: Logo + Tên App -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Menu Navigation Items -->
+                    <RowDefinition Height="*"/>
+                    <!-- Footer: Thông tin User & Đăng xuất -->
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- 1. Header Logo (Flowdesk) -->
+                <StackPanel Grid.Row="0" Margin="8,0,0,32">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <!-- Icon Logo -->
+                        <Border Width="38" Height="38" CornerRadius="10" Background="#2F70D0" Margin="0,0,12,0">
+                            <materialDesign:PackIcon Kind="WidgetsOutline" Foreground="White" Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="Quản Lí Công Việc" FontWeight="Bold" FontSize="17" Foreground="White"/>
+                            <TextBlock Text="PROJECT SPACE" FontSize="9.5" FontWeight="SemiBold" Foreground="#8B9AB0" Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- 2. Danh sách các nút Menu Sidebar -->
+                <StackPanel Grid.Row="1">
+                    <!-- Nút 1: Dự án -->
+                    <RadioButton Style="{StaticResource SidebarNavRadioButtonStyle}"
+                                 GroupName="NavMenu"
+                                 IsChecked="True"
+                                 Command="{Binding NavigateProjectsCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FolderOutline" Width="20" Height="20" Margin="0,0,12,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="Dự án" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <!-- Nút 2: Bảng công việc -->
+                    <RadioButton Style="{StaticResource SidebarNavRadioButtonStyle}"
+                                 GroupName="NavMenu"
+                                 Command="{Binding NavigateTaskBoardCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ViewDashboardOutline" Width="20" Height="20" Margin="0,0,12,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="Bảng công việc" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <!-- Nút 3: Lịch -->
+                    <RadioButton Style="{StaticResource SidebarNavRadioButtonStyle}"
+                                 GroupName="NavMenu"
+                                 Command="{Binding NavigateCalendarCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="CalendarMonthOutline" Width="20" Height="20" Margin="0,0,12,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="Lịch" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </RadioButton>
+                </StackPanel>
+
+                <!-- 3. Footer: Profile User & Nút Đăng xuất -->
+                <Border Grid.Row="2" Background="{DynamicResource BrushSidebarHover}" CornerRadius="12" Padding="12,10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Avatar tròn -->
+                        <Border Grid.Column="0" Width="36" Height="36" CornerRadius="18" Background="#DCEAFF" Margin="0,0,10,0">
+                            <TextBlock Text="{Binding UserAvatarLetter}" FontWeight="Bold" FontSize="14" Foreground="#2861B3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+
+                        <!-- Tên & Chức vụ -->
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding CurrentUserName}" FontWeight="SemiBold" Foreground="White" FontSize="13"/>
+                            <TextBlock Text="{Binding CurrentUserRole}" FontSize="11" Foreground="{DynamicResource BrushSidebarText}"/>
+                        </StackPanel>
+
+                        <!-- Nút Đăng xuất -->
+                        <Button Grid.Column="2" 
+                                Command="{Binding LogoutCommand}"
+                                Background="Transparent" BorderThickness="0" 
+                                ToolTip="Đăng xuất" Cursor="Hand" Padding="4">
+                            <materialDesign:PackIcon Kind="Logout" Foreground="{DynamicResource BrushSidebarText}" Width="18" Height="18"/>
+                        </Button>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- ==================== CỘT PHẢI: VÙNG NỘI DUNG CHÍNH (CONTENTCONTROL) ==================== -->
+        <ContentControl Grid.Column="1" 
+                        Content="{Binding CurrentView}"/>
     </Grid>
 </Window>
