@@ -19,8 +19,6 @@ namespace QuanlyCongviecNhom.Views
         {
             InitializeComponent();
         }
-
-        // Bổ sung hàm xử lý khi bấm nút "+ Thêm công việc"
         private void BtnAddTask_Click(object sender, RoutedEventArgs e)
         {
             var taskDetail = new TaskDetailWindow();
