@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:vm="clr-namespace:QuanlyCongviecNhom.ViewModels"
+        xmlns:views="clr-namespace:QuanlyCongviecNhom.Views"
         mc:Ignorable="d"
         Title="Flowdesk - Project Space" 
         Height="780" Width="1280"
@@ -27,12 +28,8 @@
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type vm:TaskBoardViewModel}">
-            <Grid Background="{DynamicResource BrushAppBackground}">
-                <TextBlock Text="ĐÂY LÀ VIEW: BẢNG PHÂN CÔNG CÔNG VIỆC" 
-                           FontSize="24" FontWeight="Bold" 
-                           Foreground="{DynamicResource BrushPrimary}"
-                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Grid>
+            <!-- Nhúng trực tiếp KanbanView của C -->
+            <views:KanbanView />
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type vm:CalendarViewModel}">

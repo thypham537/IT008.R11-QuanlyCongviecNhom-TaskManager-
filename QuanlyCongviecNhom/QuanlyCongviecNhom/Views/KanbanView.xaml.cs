@@ -13,14 +13,18 @@ using System.Windows.Shapes;
 
 namespace QuanlyCongviecNhom.Views
 {
-    /// <summary>
-    /// Interaction logic for KabanView.xaml
-    /// </summary>
-    public partial class KabanView : UserControl
+    public partial class KanbanView : UserControl
     {
-        public KabanView()
+        public KanbanView()
         {
             InitializeComponent();
+        }
+
+        // Bổ sung hàm xử lý khi bấm nút "+ Thêm công việc"
+        private void BtnAddTask_Click(object sender, RoutedEventArgs e)
+        {
+            var taskDetail = new TaskDetailWindow();
+            taskDetail.ShowDialog();
         }
     }
 }
